@@ -1,17 +1,23 @@
 import { FormEvent, useState } from 'react'
 import useQuery from '../../hooks/useQuery'
+import { QueryType } from '../../type/hooks/useQuery'
 import Button from '../Common/Button'
 import Input from '../Common/Input'
 import * as S from './CreateTodo.style'
 
-const CreateTodo = () => {
+interface Props {
+  query: QueryType
+}
+
+const CreateTodo = ({ query }: Props) => {
   const [todo, setTodo] = useState<string>('')
-  const [query] = useQuery({ method: 'post', url: '/todos' })
+  const [createTodo] = useQuery({ method: 'post', url: '/todos' })
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    await query({ todo })
+    await createTodo({ todo })
+    await query()
     setTodo('')
   }
 

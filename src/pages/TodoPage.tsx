@@ -1,12 +1,24 @@
+import { useEffect } from 'react'
 import Todos from '../components/Todos'
-import useTodos from '../hooks/useTodos'
+import useLoggedIn from '../hooks/useLoggedIn'
+import useQuery from '../hooks/useQuery'
+import TodoType from '../type/common/TodoType'
 
 const TodoPage = () => {
-  const [data] = useTodos()
+  useLoggedIn()
 
-  if (!data) return <h1>Loading...</h1>
+  const [query, todos] = useQuery<TodoType[]>({
+    method: 'get',
+    url: '/todos',
+  })
 
-  return <Todos todos={data} />
+  useEffect(() => {
+    query()
+  }, [])
+
+  if (!todos) return <h1>Loading...</h1>
+
+  return <Todos todos={todos} query={query} />
 }
 
 export default TodoPage

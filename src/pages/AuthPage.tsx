@@ -1,8 +1,8 @@
 import Auth from '../components/Auth'
-import useTodos from '../hooks/useTodos'
+import useLoggedIn from '../hooks/useLoggedIn'
 
 const AuthPage = () => {
-  useTodos()
+  useLoggedIn()
   const type = window.location.pathname.slice(1, 7) as 'signin' | 'signup'
   return <Auth type={type} />
 }
