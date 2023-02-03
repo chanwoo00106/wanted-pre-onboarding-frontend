@@ -1,7 +1,10 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useQuery from '../../hooks/useQuery'
 import { SubmitType } from '../../type/components/Auth'
+import Button from '../Common/Button'
+import Input from '../Common/Input'
+import * as S from './style'
 
 interface Props {
   type: 'signin' | 'signup'
@@ -35,7 +38,7 @@ const Auth = ({ type }: Props) => {
       setDisableBtn(true)
       return
     }
-    if (form.password.length > 8) {
+    if (form.password.length < 8) {
       alert('비밀번호는 8글자 이상입니다')
       setDisableBtn(true)
       return
@@ -52,21 +55,30 @@ const Auth = ({ type }: Props) => {
   }
 
   return (
-    <div>
+    <S.Wrapper>
       <h1>{koreanType}</h1>
-      <form onSubmit={onSubmit}>
-        <input onChange={onChange} name='email' data-testid='email-input' />
-        <input
+      <S.Form onSubmit={onSubmit}>
+        <Input
+          placeholder='Email'
+          onChange={onChange}
+          name='email'
+          data-testid='email-input'
+        />
+        <Input
+          placeholder='Password'
           onChange={onChange}
           name='password'
           type='password'
           data-testid='password-input'
         />
-        <button type='submit' disabled={disableBtn} data-testid='signup-button'>
+        <Button type='submit' disabled={disableBtn} data-testid='signup-button'>
           {koreanType}
-        </button>
-      </form>
-    </div>
+        </Button>
+        <Link to={`/${type === 'signin' ? 'signup' : 'signin'}`}>
+          {type === 'signin' ? '회원가입' : '로그인'}으로
+        </Link>
+      </S.Form>
+    </S.Wrapper>
   )
 }
 

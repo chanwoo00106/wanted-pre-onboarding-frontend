@@ -9,7 +9,6 @@ const useTodos = () => {
     method: 'get',
     url: '/todos',
   })
-  if (!localStorage.getItem('access_token')) navigate('/signin')
 
   useEffect(() => {
     if (isFail) navigate('/signin')
@@ -20,6 +19,7 @@ const useTodos = () => {
   }, [data])
 
   useEffect(() => {
+    if (!localStorage.getItem('access_token')) navigate('/signin')
     ;(async () => {
       await query()
     })()
