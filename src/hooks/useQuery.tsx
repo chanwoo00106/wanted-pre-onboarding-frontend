@@ -1,4 +1,4 @@
-import api from '@/lib/api'
+import api from '../lib/api'
 import { Method } from 'axios'
 import { useState } from 'react'
 
