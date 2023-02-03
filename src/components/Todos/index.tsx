@@ -1,5 +1,7 @@
 import TodoType from '../../type/common/TodoType'
+import CreateTodo from './CreateTodo'
 import Todo from './Todo'
+import * as S from './style'
 
 interface Props {
   todos: TodoType[]
@@ -7,13 +9,16 @@ interface Props {
 
 const Todos = ({ todos }: Props) => {
   return (
-    <div>
-      <ul>
-        {todos.map((i) => (
-          <Todo key={i.id} todo={i} />
-        ))}
-      </ul>
-    </div>
+    <S.Wrapper>
+      <CreateTodo />
+      {todos.length ? (
+        <ul>
+          {todos.map((i) => (
+            <Todo key={i.id} todo={i} />
+          ))}
+        </ul>
+      ) : null}
+    </S.Wrapper>
   )
 }
 
