@@ -1,18 +1,14 @@
-import TodoType from '../../type/common/TodoType'
 import CreateTodo from './CreateTodo'
 import Todo from './Todo'
 import * as S from './style'
-import { QueryType } from '../../type/hooks/useQuery'
+import { useContext } from 'react'
+import todoContext from '../../context/todoContext'
 
-interface Props {
-  todos: TodoType[]
-  query: QueryType
-}
-
-const Todos = ({ todos, query }: Props) => {
+const Todos = () => {
+  const { todos } = useContext(todoContext)
   return (
     <S.Wrapper>
-      <CreateTodo query={query} />
+      <CreateTodo />
       {todos.length ? (
         <ul>
           {todos.map((i) => (
