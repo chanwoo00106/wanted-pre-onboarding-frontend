@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import TodoType from '../type/common/TodoType'
 import useQuery from './useQuery'
 
 const useTodos = () => {
   const navigate = useNavigate()
-  const [query, data, isLoading, isFail] = useQuery({
+  const [query, data, , isFail] = useQuery<TodoType[]>({
     method: 'get',
     url: '/todos',
   })
@@ -24,7 +25,7 @@ const useTodos = () => {
     })()
   }, [])
 
-  return [data, isLoading]
+  return [data]
 }
 
 export default useTodos

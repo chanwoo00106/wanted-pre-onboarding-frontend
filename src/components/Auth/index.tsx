@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useQuery from '../../hooks/useQuery'
-import { SubmitType } from '../../type/components/Signup'
+import { SubmitType } from '../../type/components/Auth'
 
 interface Props {
   type: 'signin' | 'signup'
