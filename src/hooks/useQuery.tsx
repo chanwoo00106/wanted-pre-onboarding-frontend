@@ -8,7 +8,7 @@ interface Props {
 }
 
 type UseQueryReturnType<T> = [
-  (body: T) => Promise<void>,
+  (body?: T) => Promise<void>,
   T | null,
   boolean,
   boolean
