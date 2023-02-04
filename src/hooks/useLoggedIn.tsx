@@ -12,7 +12,7 @@ const useLoggedIn = () => {
       navigate('/signin')
 
     if (authUrls.includes(url) && localStorage.getItem('access_token'))
-      navigate('/todos')
+      navigate('/todo')
   }, [])
 }
 
