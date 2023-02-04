@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
   max-width: 30rem;
   width: 90vw;
   max-height: 80vh;
+  display: flex;
+  flex-direction: column;
 `
 
 export const Status = styled.div`
@@ -30,4 +32,13 @@ export const TodoList = styled.ul`
   gap: 1rem;
   max-height: 100%;
   overflow: auto;
+  margin-top: 2rem;
+
+  ::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 `
