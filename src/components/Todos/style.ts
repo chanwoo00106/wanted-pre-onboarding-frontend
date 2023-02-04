@@ -5,7 +5,21 @@ export const Wrapper = styled.div`
   padding: 2rem;
   border-radius: 0.5rem;
   max-width: 30rem;
-  width: 100%;
+  width: 90vw;
+  max-height: 80vh;
+`
+
+export const Status = styled.div`
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 0.2rem;
+`
+
+export const CompletedTodo = styled.span`
+  font-size: 4rem;
+  line-height: 0.8;
 `
 
 export const TodoList = styled.ul`
@@ -14,4 +28,6 @@ export const TodoList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  max-height: 100%;
+  overflow: auto;
 `
