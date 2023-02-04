@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 const Button = styled.button`
   width: 100%;
-  padding: 0.7rem 0;
+  padding: 0.7rem 0.8rem;
   border: none;
   border-radius: 0.5rem;
   transition: 0.2s;

@@ -2,8 +2,14 @@ import styled from '@emotion/styled'
 
 export const List = styled.li`
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
+`
+
+export const TodoInfo = styled.div`
+  display: flex;
+  gap: 1rem;
 `
 
 export const TodoName = styled.h4`
@@ -15,6 +21,12 @@ export const TodoName = styled.h4`
 
 export const Buttons = styled.div`
   display: flex;
-  min-width: 8rem;
   gap: 0.8rem;
+`
+
+export const Button = styled.div`
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 `
