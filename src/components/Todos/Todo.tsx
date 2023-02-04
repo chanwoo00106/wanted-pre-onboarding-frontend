@@ -6,6 +6,7 @@ import { FaTrash } from 'react-icons/fa'
 import { useContext, useState } from 'react'
 import useQuery from '../../hooks/useQuery'
 import todoContext from '../../context/todoContext'
+import Checkbox from './Checkbox'
 
 interface Props {
   todo: TodoType
@@ -18,6 +19,7 @@ const Todo = ({ todo }: Props) => {
     method: 'delete',
     url: `todos/${todo.id}`,
   })
+
   const onDelete = async () => {
     if (isLoading) return
     await deleteTodo()
@@ -25,19 +27,12 @@ const Todo = ({ todo }: Props) => {
   }
 
   if (isEdit)
-    return (
-      <EditTodo
-        id={todo.id}
-        todo={todo.todo}
-        isCompleted={todo.isCompleted}
-        editCancel={() => setIsEdit(false)}
-      />
-    )
+    return <EditTodo todo={todo} editCancel={() => setIsEdit(false)} />
 
   return (
     <S.List>
       <S.TodoInfo>
-        <input type='checkbox' />
+        <Checkbox todo={todo} />
         <S.TodoName>{todo.todo}</S.TodoName>
       </S.TodoInfo>
       <S.Buttons>

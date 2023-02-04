@@ -9,6 +9,7 @@ export const List = styled.li`
 
 export const TodoInfo = styled.div`
   display: flex;
+  align-items: center;
   gap: 1rem;
 `
 
