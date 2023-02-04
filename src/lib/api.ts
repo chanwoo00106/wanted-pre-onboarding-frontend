@@ -20,7 +20,11 @@ api.interceptors.response.use(
   },
   (e) => {
     if (!(e instanceof AxiosError)) return Promise.reject(e)
-    if (e.code === '401') window.location.href = '/signin'
+    console.log(e)
+    if (e.response?.status === 401) {
+      localStorage.removeItem('access_token')
+      window.location.replace('/signin')
+    }
     return Promise.reject(e)
   }
 )
