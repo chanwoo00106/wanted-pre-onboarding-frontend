@@ -1,4 +1,4 @@
-import CreateTodo from './CreateTodo'
+import AddTodo from './AddTodo'
 import Todo from './Todo'
 import * as S from './style'
 import { useContext } from 'react'
@@ -8,13 +8,13 @@ const Todos = () => {
   const { todos } = useContext(todoContext)
   return (
     <S.Wrapper>
-      <CreateTodo />
+      <AddTodo />
       {todos.length ? (
-        <ul>
+        <S.TodoList>
           {todos.map((i) => (
             <Todo key={i.id} todo={i} />
           ))}
-        </ul>
+        </S.TodoList>
       ) : null}
     </S.Wrapper>
   )

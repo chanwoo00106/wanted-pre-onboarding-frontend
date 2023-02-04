@@ -3,9 +3,9 @@ import todoContext from '../../context/todoContext'
 import useQuery from '../../hooks/useQuery'
 import Button from '../Common/Button'
 import Input from '../Common/Input'
-import * as S from './CreateTodo.style'
+import * as S from './AddTodo.style'
 
-const CreateTodo = () => {
+const AddTodo = () => {
   const [todo, setTodo] = useState<string>('')
   const [createTodo, , isLoading] = useQuery({ method: 'post', url: '/todos' })
   const { query } = useContext(todoContext)
@@ -22,13 +22,14 @@ const CreateTodo = () => {
   return (
     <S.Form onSubmit={onSubmit}>
       <Input
+        data-testid='new-todo-input'
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
-        placeholder='Todo 생성'
+        placeholder='Todo 추가'
       />
-      <Button>생성하기</Button>
+      <Button data-testid='new-todo-add-button'>추가</Button>
     </S.Form>
   )
 }
 
-export default CreateTodo
+export default AddTodo
