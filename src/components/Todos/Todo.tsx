@@ -3,7 +3,9 @@ import * as S from './Todo.style'
 import EditTodo from './EditTodo'
 import { MdEdit } from 'react-icons/md'
 import { FaTrash } from 'react-icons/fa'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+import useQuery from '../../hooks/useQuery'
+import todoContext from '../../context/todoContext'
 
 interface Props {
   todo: TodoType
@@ -11,6 +13,16 @@ interface Props {
 
 const Todo = ({ todo }: Props) => {
   const [isEdit, setIsEdit] = useState<boolean>(false)
+  const { query } = useContext(todoContext)
+  const [deleteTodo, , isLoading] = useQuery({
+    method: 'delete',
+    url: `todos/${todo.id}`,
+  })
+  const onDelete = async () => {
+    if (isLoading) return
+    await deleteTodo()
+    query()
+  }
 
   if (isEdit)
     return (
@@ -32,7 +44,7 @@ const Todo = ({ todo }: Props) => {
         <S.Button data-testid='modify-button' onClick={() => setIsEdit(true)}>
           <MdEdit size='1.5rem' fill='#313131' />
         </S.Button>
-        <S.Button data-testid='delete-button'>
+        <S.Button data-testid='delete-button' onClick={onDelete}>
           <FaTrash size='1.5rem' fill='#313131' />
         </S.Button>
       </S.Buttons>
