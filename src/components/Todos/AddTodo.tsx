@@ -12,7 +12,7 @@ const AddTodo = () => {
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (isLoading) return
+    if (isLoading || !todo.trim()) return
 
     await createTodo({ todo })
     await query()
