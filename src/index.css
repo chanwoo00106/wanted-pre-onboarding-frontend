@@ -26,7 +26,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -53,6 +54,21 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  outline: none;
+  background-color: #1a1a1a;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  transition: border-color 0.25s;
+  font-family: inherit;
+  font-weight: 500;
+}
+input:focus {
+  border-color: #646cff;
 }
 
 @media (prefers-color-scheme: light) {
