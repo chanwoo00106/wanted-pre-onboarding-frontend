@@ -9,28 +9,27 @@ interface Props {
 
 const useAuth = ({ type }: Props) => {
   const navigate = useNavigate()
-  const usernameRef = useRef<HTMLInputElement>(null)
+  const emailRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const username = usernameRef.current?.value
+    const email = emailRef.current?.value
     const password = passwordRef.current?.value
 
-    if (!username?.replace(/ /g, ''))
-      return alert('이메일 값이 올바르지 않습니다')
+    if (!email?.replace(/ /g, '')) return alert('이메일 값� 올바르지 않습니다')
     if (!password?.replace(/ /g, ''))
       return alert('비밀번호 값이 올바르지 않습니다')
 
     try {
       if (type === 'signin')
         await signin({
-          username,
+          email,
           password,
         })
       else
         await signup({
-          username,
+          email,
           password,
         })
 
@@ -41,7 +40,7 @@ const useAuth = ({ type }: Props) => {
   }
 
   return {
-    usernameRef,
+    emailRef,
     passwordRef,
     onSubmit,
   }

@@ -1,7 +1,7 @@
 import api from '@/lib/api'
 
 interface Form {
-  username: string
+  email: string
   password: string
 }
 

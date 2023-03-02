@@ -5,7 +5,7 @@ interface Props {
 }
 
 const AuthForm = ({ type }: Props) => {
-  const { usernameRef, passwordRef, onSubmit } = useAuth({ type })
+  const { emailRef, passwordRef, onSubmit } = useAuth({ type })
 
   return (
     <form
@@ -17,7 +17,7 @@ const AuthForm = ({ type }: Props) => {
         gap: '1rem',
       }}
     >
-      <input type='email' ref={usernameRef} />
+      <input type='email' ref={emailRef} />
       <input type='password' ref={passwordRef} />
       <button>{type === 'signin' ? '로그인' : '회원가입'}</button>
     </form>
