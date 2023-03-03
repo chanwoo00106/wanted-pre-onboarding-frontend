@@ -6,7 +6,7 @@ const useAddTodo = () => {
   const todoRef = useRef<HTMLInputElement>(null)
   const { addTodo } = useContext(TodoContext)
 
-  const onSubmit = async (e: FormEvent<HTMLInputElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const todo = todoRef.current?.value
     if (!todo?.replace(/ /g, '')) return
@@ -14,6 +14,7 @@ const useAddTodo = () => {
     const data = await postTodo(todo)
 
     if (data) addTodo(data)
+    if (todoRef.current) todoRef.current.value = ''
   }
 
   return { todoRef, onSubmit }

@@ -4,6 +4,7 @@ import { TodoType } from '../types'
 
 const TodoContext = createContext<TodoContextType>({
   todos: [],
+  setTodos: () => {},
   addTodo: () => {},
   removeTodo: () => {},
   updateTodo: () => {},
@@ -34,7 +35,9 @@ export const TodoProvider = ({ children }: Props) => {
   }
 
   return (
-    <TodoContext.Provider value={{ todos, addTodo, updateTodo, removeTodo }}>
+    <TodoContext.Provider
+      value={{ todos, addTodo, updateTodo, removeTodo, setTodos }}
+    >
       {children}
     </TodoContext.Provider>
   )
