@@ -1,15 +1,22 @@
-import { useContext } from 'react'
-import TodoContext from '../context/TodoContext'
+import useRemoveTodo from '../hooks/useRemoveTodo'
 import useTodos from '../hooks/useTodos'
 
 const TodoList = () => {
-  const { todos } = useContext(TodoContext)
-  useTodos()
+  const { todos } = useTodos()
+  const { onClick } = useRemoveTodo()
 
   return (
-    <ul>
+    <ul
+      style={{
+        height: '80vh',
+        overflowY: 'scroll',
+      }}
+    >
       {todos.map((i) => (
-        <li key={i.id}>{i.todo}</li>
+        <li key={i.id} style={{ display: 'flex', gap: '1rem' }}>
+          <h3>{i.todo}</h3>
+          <button onClick={() => onClick(i.id)}>삭제</button>
+        </li>
       ))}
     </ul>
   )

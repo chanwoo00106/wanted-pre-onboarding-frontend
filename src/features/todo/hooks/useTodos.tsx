@@ -3,7 +3,7 @@ import TodoContext from '../context/TodoContext'
 import getTodos from '../services/getTodos'
 
 const useTodos = () => {
-  const { setTodos } = useContext(TodoContext)
+  const { todos, setTodos } = useContext(TodoContext)
 
   useEffect(() => {
     ;(async () => {
@@ -13,6 +13,8 @@ const useTodos = () => {
       }
     })()
   }, [])
+
+  return { todos }
 }
 
 export default useTodos
