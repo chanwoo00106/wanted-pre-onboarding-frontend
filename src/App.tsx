@@ -4,6 +4,7 @@ import * as P from '@/pages'
 function App() {
   return (
     <Routes>
+      <Route path='/' element={<P.TodoPage />} />
       <Route path='/signin' element={<P.AuthPage />} />
       <Route path='/signup' element={<P.AuthPage />} />
       <Route path='*' element={<P.NotFoundPage />} />
