@@ -19,7 +19,13 @@ api.interceptors.response.use(
     return res
   },
   (e) => {
-    if (isAxiosError(e) && e.response?.status === 401) location.href = '/'
+    const loginUrl = ['/signin', '/signup']
+    if (
+      isAxiosError(e) &&
+      e.response?.status === 401 &&
+      !loginUrl.includes(location.pathname)
+    )
+      location.href = '/signin'
 
     return Promise.reject(e)
   }

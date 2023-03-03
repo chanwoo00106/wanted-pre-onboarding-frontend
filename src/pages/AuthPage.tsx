@@ -1,7 +1,9 @@
 import AuthForm from '@/features/auth/components/AuthForm'
+import useLoggedIn from '@/hooks/useLoggedIn'
 import { Link } from 'react-router-dom'
 
 const AuthPage = () => {
+  useLoggedIn()
   const type = window.location.pathname.replace('/', '')
 
   return (
