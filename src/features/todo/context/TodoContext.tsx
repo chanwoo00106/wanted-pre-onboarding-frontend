@@ -2,7 +2,12 @@ import { TodoContextType } from '../types'
 import { createContext, ReactNode, useState } from 'react'
 import { TodoType } from '../types'
 
-const TodoContext = createContext<TodoContextType | null>(null)
+const TodoContext = createContext<TodoContextType>({
+  todos: [],
+  addTodo: () => {},
+  removeTodo: () => {},
+  updateTodo: () => {},
+})
 
 interface Props {
   children: ReactNode
