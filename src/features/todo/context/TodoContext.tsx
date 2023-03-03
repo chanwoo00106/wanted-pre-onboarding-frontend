@@ -23,11 +23,10 @@ export const TodoProvider = ({ children }: Props) => {
 
   const updateTodo = (newTodo: TodoType) => {
     const idx = todos.findIndex((i) => i.id === newTodo.id)
+    const newTodos = [...todos]
+    newTodos[idx] = newTodo
 
-    setTodos((todos) => {
-      todos[idx] = newTodo
-      return todos
-    })
+    setTodos(newTodos)
   }
 
   const removeTodo = (id: number) => {
